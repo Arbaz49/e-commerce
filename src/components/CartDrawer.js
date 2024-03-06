@@ -47,9 +47,7 @@ const decreaseQuantity=()=>{
   const handleClick = () => {};
   const handleClear = () => {
     setState({ ...state, ["right"]: false });
-    // setQuantity(0);
     dispatch(clearCart())
-
   }
 
   return (
@@ -76,15 +74,13 @@ const decreaseQuantity=()=>{
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
           >
-           
-            <div className="bg-pink-400 h-full">
+            <div style={{minWidth:"500px"}} className="bg-pink-400 h-full">
             <h2 className="text-center font-bold text-3xl">Cart</h2>
               <img
                 width={"50px"}
                 height={"50px"}
                 style={{borderRadius:"50%"}}
                 className="m-auto"
-                // height={"100px"}
                 src="https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/9/1/o/m-db1024-42-3bros-original-imagz8zkvwjtayrs.jpeg?q=70"
                 alt="test"
               />
@@ -107,7 +103,7 @@ const decreaseQuantity=()=>{
               </Badge>
                 
                   <p className="font-bold text-2xl ml-1">
-                    I Have 3 Moods Hoodie (S/Black)
+                    {product?.title}
                   </p>
                   <div className="flex justify-between gap-4 ml-8" style={{width:"80px"}}>
                     <button

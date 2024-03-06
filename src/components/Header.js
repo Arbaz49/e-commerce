@@ -12,7 +12,7 @@ const Header = () => {
         <div className="p-3 w-full flex flex-wrap bg-white text-black flex-col md:flex-row items-center">
           <Link href={"/"} className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
 
-            <span className="ml-3 text-pink-500 text-xl">WearThings.com</span>
+            <span className="ml-3 text-pink-500 text-xl">WearThings</span>
           </Link>
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <Link href={"/tshirts"} className="mr-5 hover:text-gray-900 cursor-pointer">T-shirts</Link>
