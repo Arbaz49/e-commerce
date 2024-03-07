@@ -11,7 +11,7 @@ export const cartSlice = createSlice({
       const isProductInCart = state.cartArray.some(product => product._id === id);
 
       if (!isProductInCart) {
-        state.cartArray = [...state.cartArray, action.payload];
+        state.cartArray = [...state.cartArray, {...action.payload,quantity:1}];
       } else {
         console.log("Product with id", id, "is already in the cart.");
       }
@@ -26,6 +26,21 @@ export const cartSlice = createSlice({
         console.log("Product with id", id, "does not exist in the cart.");
       }
     },
+    removeQuantity: function (state, action) {
+      const id = action.payload;
+      const productIndex = state.cartArray.findIndex(product => product.id === id);
+    
+      if (productIndex !== -1) {
+        if (state.cartArray[productIndex].quantity > 1) {
+          state.cartArray[productIndex].quantity--; // Decrease the quantity
+        } else {
+          // Quantity is 1, remove the item from the array
+          state.cartArray.splice(productIndex, 1);
+        }
+      } else {
+        console.log("Product with id", id, "does not exist in the cart.");
+      }
+    },
     clearCart:function(state,action){
       state.cartArray=[]
     }
@@ -35,6 +50,6 @@ export const cartSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addToCart, addQuantity,clearCart} = cartSlice.actions
+export const { addToCart, addQuantity,clearCart,removeQuantity} = cartSlice.actions
 
 export default cartSlice.reducer

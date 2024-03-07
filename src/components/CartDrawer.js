@@ -15,7 +15,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Badge } from "@mui/material";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import {clearCart} from "../store/CartSlice"
+import {clearCart,addQuantity,removeQuantity} from "../store/CartSlice"
 export default function CartDrawer() {
   const cartLength = useSelector((state) => state.cart.cartArray.length)
   const cartArray = useSelector((state) => state.cart.cartArray)
@@ -24,16 +24,22 @@ export default function CartDrawer() {
   const [state, setState] = React.useState({
     right: false,
   });
-const[quantity,setQuantity]=React.useState(1);
-const increaseQuantity=()=>{
-setQuantity(quantity+1);
-}
-const decreaseQuantity=()=>{
-  if(quantity>=1){
+  const increaseQuantity = () => {
+    dispatch(addQuantity())
+    // setQuantity(quantity+1);
+  }
+  const decreaseQuantity = () => {
 
-    setQuantity(quantity-1);
+    dispatch(removeQuantity())
+    // setQuantity(quantity-1);
   }
-  }
+  const calculateTotal = () => {
+    return cartArray.reduce((total, product) => total + product.price * product.quantity, 0);
+  };
+  
+  React.useEffect(()=>{
+
+  },[])
   const toggleDrawer = (anchor, open) => (event) => {
     if (
         event.type === "keydown" &&
@@ -88,7 +94,7 @@ const decreaseQuantity=()=>{
               {cartArray.map((product)=>{
                 return <div className="info m-3 flex align-middle  justify-between" style={{alignItems:"center"}}>
                 <Badge
-                badgeContent={quantity}
+                badgeContent={product?.quantity}
                 className="text-pink-500"
                 color="secondary"
                 style={{ color: "pink" }}
@@ -116,7 +122,7 @@ const decreaseQuantity=()=>{
                       onClick={handleClick}
                       className="font-bold ml-1 cursor-pointer shadow-xl text-xl"
                     >
-                      {quantity}
+                      {product?.quantity}
                     </button>
                     <button
                       onClick={increaseQuantity}
@@ -129,13 +135,16 @@ const decreaseQuantity=()=>{
               })}
 
               <div>
-                <h3 className="font-bold ml-3">subtotal :0</h3>
+                <h3 className="font-bold ml-3">subtotal :{calculateTotal()}</h3>
               </div>
               <div>
-                <Link href={"/checkout"} onClick={()=> setState({ ...state, ["right"]: false })} className="p-2 bg-pink-500 text-white font-bold hover:bg-black m-1">
-                  Checkout
-                </Link>
-                <Button onClick={handleClear} className="bg-pink-500 text-white font-bold hover:bg-black m-1">
+                {cartArray.length >0 
+                  ? <Link href={"/checkout"} onClick={() => setState({ ...state, ["right"]: false })} className="p-2 bg-pink-500 text-white font-bold hover:bg-pink-400 m-1">
+                    Checkout
+                  </Link>: <button disabled={true} className="p-1 rounded  text-white font-bold hover:bg-slate-300 m-1">
+                    Checkout
+                  </button>}
+                <Button disabled={cartArray.length ? false :true} onClick={handleClear} className="bg-pink-500 text-white font-bold hover:bg-black m-1">
                   Clear
                 </Button>
               </div>

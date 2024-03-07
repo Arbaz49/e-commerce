@@ -19,7 +19,7 @@ const Header = () => {
             <Link href={"/tshirts"} className="mr-5 hover:text-gray-900 cursor-pointer">Hoodies</Link>
             <Link href={"/tshirts"} className="mr-5 hover:text-gray-900 cursor-pointer">Mugs</Link>
             <Link href={"/about"} className="mr-5 hover:text-gray-900 cursor-pointer">About Us</Link>
-            <Link href={"/login"} className="mr-5 hover:text-gray-900 cursor-pointer">Log In</Link>
+            <Link href={"/login"} className="mr-5 p-1 rounded px-2 bg-pink-500 text-white hover:text-gray-900 cursor-pointer">Log In</Link>
           </nav>
           <span className="inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-white mt-4 md:mt-0">
             <CartDrawer />
