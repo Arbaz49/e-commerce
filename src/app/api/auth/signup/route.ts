@@ -1,6 +1,6 @@
 import User from "../../../models/user";
 import {connectDB} from "../../../../util"
-
+import bcryptjs from "bcryptjs"
 
 export async function GET(request: Request, response: Response) {
 }
@@ -9,7 +9,8 @@ export async function POST(request: Request, response: Response) {
   console.log("11111111111111111111111111111111111111111111")
   await connectDB()
   const body = await request.json();
-  const user =await User.create(body);
+  const hashedPassword=await bcryptjs.hash(body.password,8)
+  const user =await User.create({...body, password:hashedPassword});
   console.log("user body", body);
  
   console.log("after user created");
