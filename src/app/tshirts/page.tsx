@@ -3,33 +3,51 @@ import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import Loader from "@/components/Loader";
+import LoadingBar from "react-top-loading-bar";
 const Tshirts = () => {
   const [products, setProducts] = useState<any[]>([]);
+  const [showLoader, setShowLoader] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(0);
+
   useEffect(() => {
-    getAllProducts()
+    getAllProducts();
   }, []);
   const getAllProducts = async () => {
+    setShowLoader(true);
+    setProgress(20);
     try {
+    setProgress(50);
+
       const { data } = await axios.get("http://localhost:3000/api/products");
-      setProducts(data.data);
-      console.log(data)
-    } catch (e:any) {
+      setProgress(70);
+
+      await setProducts(data.data);
+      setShowLoader(false);
+      setProgress(100);
+
+      console.log(data);
+    } catch (e: any) {
+      setShowLoader(true);
       console.error(e);
     }
   };
-  return (
+  return showLoader ? (
+    <Loader />
+  ) : (
     <div>
+      <LoadingBar
+      style={{height:"4px"}}
+        color="rgb(236 72 153)"
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
       <Head>
         <title>Buy-tshirts</title>
       </Head>
       <h2 className="text-5xl  text-center">Explore Our Tshirts Collection</h2>
-      <p className="m-4 font-semibold">
-        Welcome to WearThings.com, your one-stop shop for stylish and unique
-        tshirts. Buy T-Shirts at the best price in India. We offer a wide range
-        of tshirts for all interests, including coding tshirts, anime tshirts,
-        and casual tshirts for everyday wear. All of our tshirts are made with
-        high-quality materials and are designed to be comfortable and durable.
-        Shop now and find the perfect tshirt for you!
+      <p className="p-3 text-sm font-medium text-gray-600 dark:text-gray-400 tracking-tighter mb-3">
+      Welcome to Wearthings, your one-stop shop for stylish and unique tshirts. Buy T-Shirts at the best price in India. We offer a wide range of tshirts for all interests, including coding tshirts, anime tshirts, and casual tshirts for everyday wear. All of our tshirts are made with high-quality materials and are designed to be comfortable and durable. Shop now and find the perfect tshirt for you!
       </p>
       <section className="text-gray-600 body-font flex justify-center m-auto">
         <div className="container px-5 py-24 mx-auto">

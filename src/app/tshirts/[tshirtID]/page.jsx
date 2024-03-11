@@ -4,18 +4,31 @@ import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {addToCart} from "../../../store/CartSlice"
+import Loader from "@/components/Loader"
+import LoadingBar from 'react-top-loading-bar';
 function SingleTshirt({params}) {
     const [product,setProduct]=useState()
     const [pin, setpin] = useState()
-  const [service, setService] = useState()
+  const [service, setService] = useState();
+  const [showLoader, setShowLoader] = useState(false);
+  const [progress, setProgress] = useState(0);
     useEffect(()=>{
       getProduct()
     },[])
+
+
     const getProduct = async () => {
-    const {tshirtID}=await params
+    const {tshirtID}=await params;
+    setShowLoader(true);
+    setProgress(20);
       try {
+        setProgress(50)
         const { data } = await axios.get(`http://localhost:3000/api/products/${tshirtID}`);
-        setProduct(data.data);
+        await setShowLoader(true)
+        setProgress(70);
+        await setProduct(data.data);
+        setShowLoader(false)
+        setProgress(100)
         console.log(data)
       } catch (e) {
         console.error(e);
@@ -39,8 +52,14 @@ function SingleTshirt({params}) {
     const handleAddToCart=()=>{
       dispatch(addToCart(product))
     }
-    return (
+    return  showLoader? <Loader/> :
       <div>
+            <LoadingBar
+      style={{height:"4px"}}
+        color="rgb(236 72 153)"
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
         <Head>
           <title>Buy
             I Have 3 Moods Hoodie (S/Black)</title>
@@ -145,7 +164,6 @@ function SingleTshirt({params}) {
           </div>
         </section>
       </div>
-    )
 }
 
 export default SingleTshirt;
