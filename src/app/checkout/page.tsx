@@ -1,8 +1,72 @@
+"use client"
+import axios from "axios";
+import Head from "next/head";
 import React from "react";
 import {BsBagCheck} from "react-icons/bs"
 const Checkout = () => {
+  const handlePurchase = async () => {
+    // console.log(purchaseInfo);
+    try {
+      // let authToken = localStorage.getItem("token");
+      const order = await axios.post(
+        "http://localhost:3000/api/payment/checkout",
+        { amount:200 },
+        // {
+        //   headers: { token: `Bearer ${authToken}` },
+        // }
+      );
+      console.log(order.data.order.amount);
+      const options = {
+        key: "rzp_test_qJEvwm7xnj6UXg",
+        amount: 200,
+        currency: "INR",
+        name: "WearThings",
+        description: "WearThings",
+        image: "image",
+        // redirect:true,
+        order_id: order.data.order.id,
+        // callback_url:"http://localhost:8000/payment/verification",
+        handler: function (response:any) {
+          axios
+            .post("http://localhost:3000/api/payment/verification", response)
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        },
+        prefill: {
+          name: "Arbaz Solkar",
+          email: "arbaz@example.com",
+          contact: "8691846098",
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#000000",
+        },
+      };
+      let rzp1 = new window.Razorpay(options);
+      rzp1.open();
+
+      const data = await axios.post(
+        "http://localhost:3000/api/purchase",
+        "body",
+      );
+    } catch (e) {
+      console.log(e);
+      // toast.error(e.message);
+    }
+  };
   return (
     <div className="container m-auto">
+       <Head>
+        <title>Buy-tshirts</title>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+      </Head>
       <h1 className="font-bold text-3xl text-center my-8">Checkout page</h1>
       <h2 className="font-bold text-xl">1. Delivery details</h2>
       <div className="mx-auto flex">
@@ -116,7 +180,7 @@ const Checkout = () => {
         style={{alignItems:"center", gap:"5px"}}
       >
         <BsBagCheck/>
-        <span>
+        <span onClick={handlePurchase}>
 
         Pay
         </span>

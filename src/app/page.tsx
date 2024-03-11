@@ -1,13 +1,12 @@
 import { Inter } from 'next/font/google'
-import Header from '@/components/Header'
 import Head from 'next/head'
-// import Footer from '@/components/footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
   <div>
     <Head>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
       <title>WearThings.com-wear the code</title>
       <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     </Head>

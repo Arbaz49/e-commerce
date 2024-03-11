@@ -1,9 +1,11 @@
 "use client"
 import axios from 'axios';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 const page = () => {
+  const router =useRouter()
   const [fields, setFields] = useState({
     email: "",
     password: "",
@@ -13,7 +15,6 @@ const page = () => {
     setFields({ ...fields, [e.target.name]: e.target.value });
     console.log("onChange", 111);
   };
-  
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log("form submitted");
@@ -26,6 +27,7 @@ const page = () => {
         email: "",
         password: "",
       });
+      router.push("/tshirts")
     } catch (e: any) {
       console.log("Error", e.message);
     }
