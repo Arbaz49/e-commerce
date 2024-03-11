@@ -64,7 +64,7 @@ const Tshirts = () => {
                     <img
                       alt="ecommerce"
                       className="h-[36vh] m-auto  block"
-                      src="https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/9/1/o/m-db1024-42-3bros-original-imagz8zkvwjtayrs.jpeg?q=70"
+                      src={product?.img}
                     />
                   </a>
                   <div className="mt-4 text-center">

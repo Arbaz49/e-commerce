@@ -20,7 +20,7 @@ export default function CartDrawer() {
   const cartLength = useSelector((state) => state.cart.cartArray.length)
   const cartArray = useSelector((state) => state.cart.cartArray)
 
-  console.log("length",cartLength)
+  console.log("length",cartArray)
   const [state, setState] = React.useState({
     right: false,
   });
@@ -103,8 +103,7 @@ export default function CartDrawer() {
                     width={"50px"}
                     height={"50px"}
                     className="mr-4"
-                    src="https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/9/1/o/m-db1024-42-3bros-original-imagz8zkvwjtayrs.jpeg?q=70"
-                    alt="test"
+                    src={product?.img}
                   />
               </Badge>
                 
