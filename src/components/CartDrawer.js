@@ -24,13 +24,13 @@ export default function CartDrawer() {
   const [state, setState] = React.useState({
     right: false,
   });
-  const increaseQuantity = () => {
-    dispatch(addQuantity())
+  const increaseQuantity = (id) => {
+    dispatch(addQuantity(id))
     // setQuantity(quantity+1);
   }
-  const decreaseQuantity = () => {
+  const decreaseQuantity = (id) => {
 
-    dispatch(removeQuantity())
+    dispatch(removeQuantity(id))
     // setQuantity(quantity-1);
   }
   const calculateTotal = () => {
@@ -112,7 +112,7 @@ export default function CartDrawer() {
                   </p>
                   <div className="flex justify-between gap-4 ml-8" style={{width:"80px"}}>
                     <button
-                      onClick={decreaseQuantity}
+                      onClick={()=>decreaseQuantity(product?._id)}
                       className="font-bold ml-1 cursor-pointer shadow-xl text-xl"
                     >
                       -
@@ -124,7 +124,7 @@ export default function CartDrawer() {
                       {product?.quantity}
                     </button>
                     <button
-                      onClick={increaseQuantity}
+                      onClick={()=>increaseQuantity(product?._id)}
                       className="font-bold ml-1 cursor-pointer shadow-xl text-xl"
                     >
                       +

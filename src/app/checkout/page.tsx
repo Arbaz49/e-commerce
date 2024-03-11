@@ -90,15 +90,7 @@ const Checkout = () => {
           "http://localhost:3000/api/purchase",
           checkOutDetails,
         );
-        setCheckOutDetails({
-          email:"",
-          phone:"",
-          address:"",
-          name:"",
-          pinCode:"",
-          state:"",
-          district:""
-      })
+ 
   
       } catch (e) {
         console.log(e);

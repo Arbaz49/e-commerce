@@ -1,8 +1,18 @@
+"use client"
 import { Inter } from 'next/font/google'
+import "react-alice-carousel/lib/alice-carousel.css";
+import AliceCarousel from 'react-alice-carousel';
 import Head from 'next/head'
 const inter = Inter({ subsets: ['latin'] })
-
 export default function Home() {
+  const images=[
+    <img src="/img1.webp" role="presentation" />,
+    <img src="/img2.webp" role="presentation" />,
+    <img src="/img3.webp" role="presentation" />,
+    <img src="/img4.webp" role="presentation" />,
+    <img src="/img5.webp" role="presentation" />,
+
+  ]
   return (
   <div>
     <Head>
@@ -12,7 +22,14 @@ export default function Home() {
     </Head>
     <div>
 
-    <img src="/hero.jpg" alt="hero" style={{height:"70vh",width:"100%"}} />
+    <AliceCarousel 
+    animationDuration={1500}
+    autoPlay={true}
+    autoPlayControls={false}
+    disableDotsControls={false}
+    infinite={true}
+    disableButtonsControls={true}
+    items={images} />
     </div>
     <section className="text-gray-600 body-font">
   <div className="container px-5 py-24 mx-auto">

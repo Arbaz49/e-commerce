@@ -108,7 +108,7 @@ function SingleTshirt({params}) {
                     </a>
                   </span>
                 </div>
-                <p className="leading-relaxed">{product?.desc}</p>
+                <p className="leading-relaxed">{product?.desc} Show off your love for the hit anime series Naruto with this stylish and comfortable t-shirt. Made from a soft and breathable cotton blend, this shirt is perfect for casual wear or for attending anime conventions and events. The bold and eye-catching design features a print of Naruto Uzumaki in his classic orange and black outfit, along with the iconic Naruto logo. This shirt is a great addition to any Naruto fan's wardrobe, and is sure to be a conversation starter wherever you go.</p>
                 <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                   <div className="flex">
                     <span className="mr-3">Color</span>
@@ -158,8 +158,20 @@ function SingleTshirt({params}) {
                     we deliver here!!!
                   </div>)
                 }
+                  <div>
+                <h3 className='font-bold mt-2'>Exciting Offers:</h3>
+                  <ul
+                  // style={{  listStyle: "none",paddingLeft:"0px"}}
+                  >
+
+                    <li> <span></span>Get Flat 10% off on all prepaid orders above ₹249 Use coupon WEAR10</li>
+                    <li>Get Customized T-Shirts at only ₹549.</li>
+                    <li>Buy 2 get 1 Free and buy 3 get 2 Free on all Caps - Prepaid orders only.</li>
+                  </ul>
+              </div>
   
               </div>
+            
             </div>
           </div>
         </section>
