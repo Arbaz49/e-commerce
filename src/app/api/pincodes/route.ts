@@ -1,5 +1,4 @@
 export async function GET(request: Request, response: Response) {
-    // const getRequest = await request.json();
     console.log("GET request",request);
     return new Response(
       JSON.stringify({
@@ -14,4 +13,3 @@ export async function GET(request: Request, response: Response) {
       }
     );
   }
-  

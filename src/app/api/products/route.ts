@@ -1,10 +1,8 @@
 import Product from "../../models/product";
 import {connectDB} from "../../../util"
 
-
 export async function GET(request: Request, response: Response) {
   await connectDB();
-  // const getRequest = await request.json();
   const {searchParams} = new URL(request.url);
   const param = searchParams.get("category");
   console.log("GET request",request);
