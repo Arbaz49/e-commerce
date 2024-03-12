@@ -1,16 +1,7 @@
 "use client"
 import * as React from "react";
-import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-// import ListItemButton from '@mui/material/ListItemButton';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from "@mui/material/ListItemText";
-// import InboxIcon from '@mui/icons-material/MoveToInbox';
-// import MailIcon from '@mui/icons-material/Mail';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Badge } from "@mui/material";
 import Link from "next/link";
@@ -26,12 +17,10 @@ export default function CartDrawer() {
   });
   const increaseQuantity = (id) => {
     dispatch(addQuantity(id))
-    // setQuantity(quantity+1);
   }
   const decreaseQuantity = (id) => {
 
     dispatch(removeQuantity(id))
-    // setQuantity(quantity-1);
   }
   const calculateTotal = () => {
     return cartArray.reduce((total, product) => total + product.price * product.quantity, 0);

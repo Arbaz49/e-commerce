@@ -2,7 +2,6 @@
 import Link from 'next/link'
 import React from 'react'
 import CartDrawer from './CartDrawer'
-import axios from 'axios'
 import Head from 'next/head'
 
 const Header = () => {
@@ -27,7 +26,6 @@ const Header = () => {
           </nav>
           <span className="inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-white mt-4 md:mt-0">
             <CartDrawer />
-            {/* <span>dbjk</span> */}
           </span>
         </div>
       </header>

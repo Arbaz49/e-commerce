@@ -16,10 +16,7 @@ function SingleTshirt({ params }) {
     getProduct()
   }, [])
 const productId=params.hoodieID;
-console.log("22222",productId)
-
   const getProduct = async () => {
-  // const { hoodieID } = await params;
     setShowLoader(true);
     setProgress(20);
     try {
@@ -177,7 +174,6 @@ console.log("22222",productId)
         </div>
       </section>
     </div>
-  // return <span>{productId}</span>
 }
 
 export default SingleTshirt;

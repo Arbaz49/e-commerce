@@ -40,7 +40,7 @@ export const cartSlice = createSlice({
         console.log("Product with id", id, "does not exist in the cart.");
       }
     },
-    clearCart:function(state,action){
+    clearCart:function(state){
       state.cartArray=[]
     }
 
