@@ -5,8 +5,10 @@ import {connectDB} from "../../../util"
 export async function GET(request: Request, response: Response) {
   await connectDB();
   // const getRequest = await request.json();
+  const {searchParams} = new URL(request.url);
+  const param = searchParams.get("category");
   console.log("GET request",request);
-  const products = await Product.find();
+  const products = await Product.find({category: param});
   return new Response(
     JSON.stringify({
       message: "success",

@@ -4,7 +4,6 @@ import mongoose from "mongoose";
 export async function GET(request: Request, { params }: any) {
     await connectDB();
     const slug = params.id; // Assuming the slug is passed in the URL parameters
-
     try {
         const product = await Product.findOne({ slug });
 
@@ -28,8 +27,6 @@ export async function GET(request: Request, { params }: any) {
             return new Response(
                 JSON.stringify({
                     message: "Product not found",
-                    total: 0,
-                    data: [],
                 }),
                 {
                     headers: {

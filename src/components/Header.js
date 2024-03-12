@@ -20,7 +20,7 @@ const Header = () => {
           </Link>
           <nav className="md:ml-auto gap-3 flex flex-wrap items-center text-base justify-center">
             <Link href={"/tshirts"} className="text-lg my-2 font-semibold hover:text-pink-400 transition duration-150 ease-out hover:ease-in">T-shirts</Link>
-            <Link href={"/tshirts"} className="mr-5text-lg my-2 font-semibold hover:text-pink-400 transition duration-150 ease-out hover:ease-in">Hoodies</Link>
+            <Link href={"/hoodie"} className="mr-5text-lg my-2 font-semibold hover:text-pink-400 transition duration-150 ease-out hover:ease-in">Hoodies</Link>
             <Link href={"/tshirts"} className="mr-5text-lg my-2 font-semibold hover:text-pink-400 transition duration-150 ease-out hover:ease-in">Mugs</Link>
             <Link href={"/about"} className="mr-5text-lg my-2 font-semibold hover:text-pink-400 transition duration-150 ease-out hover:ease-in">About Us</Link>
             <Link href={"/login"} className="mr-5 p-1 rounded px-2 bg-pink-500 text-white hover:text-gray-900 cursor-pointer">Log In</Link>
