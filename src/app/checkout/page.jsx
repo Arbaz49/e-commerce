@@ -5,15 +5,15 @@ import { useRouter } from "next/navigation";
 import React, { Key, useEffect, useState } from "react";
 import {BsBagCheck} from "react-icons/bs"
 import { useSelector } from "react-redux";
-interface checkOutType {
-  email:string,
-  phone:string,
-  address:string,
-  name:string,
-  pinCode:string,
-  state:string,
-  district:string
-}
+// interface checkOutType {
+//   email:string,
+//   phone:string,
+//   address:string,
+//   name:string,
+//   pinCode:string,
+//   state:string,
+//   district:string
+// }
 const Checkout = () => {
   const router=useRouter()
   const user=localStorage.getItem("User")
@@ -22,9 +22,9 @@ const Checkout = () => {
       router.push("/")
     }
   },[])
-  const cartLength = useSelector((state:any) => state.cart.cartArray.length)
-  const cartArray = useSelector((state:any) => state.cart.cartArray)
-  const [checkOutDetails,setCheckOutDetails]=useState<checkOutType>({
+  const cartLength = useSelector((state) => state.cart.cartArray.length)
+  const cartArray = useSelector((state) => state.cart.cartArray)
+  const [checkOutDetails,setCheckOutDetails]=useState({
     email:"",
     phone:"",
     address:"",
@@ -33,7 +33,7 @@ const Checkout = () => {
     state:"",
     district:""
   })
-  const isAnyFieldEmpty = (details:any) => {
+  const isAnyFieldEmpty = (details) => {
     for (const key in details) {
       if (details[key]  === "") {
         return true; // Return true if any field is empty
@@ -42,7 +42,7 @@ const Checkout = () => {
     return false; // Return false if no field is empty
   };
   const calculateTotal = () => {
-    return cartArray.reduce((total:number, product:any) => total + product.price * product.quantity, 0);
+    return cartArray.reduce((total, product) => total + product.price * product.quantity, 0);
   };
   const handlePurchase = async () => {
     // console.log(purchaseInfo);
@@ -68,7 +68,7 @@ const Checkout = () => {
           // redirect:true,
           order_id: order.data.order.id,
           // callback_url:"http://localhost:8000/payment/verification",
-          handler: function (response:any) {
+          handler: function (response) {
             axios
               .post("http://localhost:3000/api/payment/verification", response)
               .then((res) => {
@@ -107,7 +107,7 @@ const Checkout = () => {
     }
     // router.push("/")
   };
-  const handleFieldChange=(e:any)=>{
+  const handleFieldChange=(e)=>{
     setCheckOutDetails({...checkOutDetails,[e.target.name]:e.target.value});
 console.log("event",e.target.name,e.target.value);
   }

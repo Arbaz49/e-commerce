@@ -8,7 +8,7 @@ let instance = new Razorpay({
   key_id:KEY_ID,
   key_secret:KEY_SECRET,
 });
-export async function POST(request: Request, response: Response) {
+export async function POST(request, response) {
     const body = await request.json();
     console.log("POST request body", body);
     let amount = body.amount;
