@@ -10,7 +10,7 @@ const Product = ({product,linkRoute}:any) => {
                   <a className="relative  rounded overflow-hidden">
                     <img
                       alt="ecommerce"
-                      className="h-[36vh] m-auto  block"
+                      className="h-[40vh] m-auto  block w-full"
                       src={product?.img}
                     />
                   </a>
