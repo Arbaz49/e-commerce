@@ -46,8 +46,8 @@ const Checkout = () => {
   };
   const handlePurchase = async () => {
     // console.log(purchaseInfo);
-    const isformInvalid=isAnyFieldEmpty(checkOutDetails)
-    if(!isformInvalid){
+    const isFormInvalid=isAnyFieldEmpty(checkOutDetails)
+    if(!isFormInvalid){
       try {
         // let authToken = localStorage.getItem("token");
         const order = await axios.post(
@@ -190,7 +190,7 @@ console.log("event",e.target.name,e.target.value);
         <div className="px-2 w-1/2">
           <div className=" mb-4">
             <label
-              htmlFor="pincode"
+              htmlFor="pinCode"
               className="leading-7 text-sm text-gray-600"
             >
               PinCode(India)

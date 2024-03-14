@@ -62,7 +62,7 @@ const AboutPAge = () => {
                   <a className="inline-flex items-center">
                     <span className="flex-grow flex flex-col pl-4">
                       <span className="title-font font-medium text-gray-900">
-                        Aakash Sharma
+                        Abash Sharma
                       </span>
                       <span className="text-gray-500 text-sm">CUSTOMER</span>
                     </span>
@@ -81,7 +81,7 @@ const AboutPAge = () => {
                   </svg>
                   <p className="leading-relaxed mb-6">
                     I recently purchased a hoodie and t-shirt from this online
-                    ecommerce site and I couldn't be happier with my purchase!
+                    E-commerce site and I couldn't be happier with my purchase!
                     The quality of the clothing is top-notch and the designs are
                     unique and stylish. The ordering process was easy and the
                     shipping was fast. I also appreciate the wide variety of
@@ -92,7 +92,7 @@ const AboutPAge = () => {
                   <a className="inline-flex items-center">
                     <span className="flex-grow flex flex-col pl-4">
                       <span className="title-font font-medium text-gray-900">
-                        Sonu Kumar
+                        john Kumar
                       </span>
                       <span className="text-gray-500 text-sm">CUSTOMER</span>
                     </span>

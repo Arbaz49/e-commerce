@@ -20,10 +20,18 @@ const createOrder = async (req, res) => {
     currency: "INR",
   };
   let order = await instance.orders.create(options);
-  res.json({
-    message: "sucessfully created order",
-    order,
-  });
+  return new Response(
+    JSON.stringify({
+      message: "Successfully created order",
+      order,
+    }),
+    {
+      headers: {
+        "content-type": "application/json",
+      },
+      status: 200,
+    }
+  );
 }
 
 const paymentVerification = async (req, res) => {
@@ -42,9 +50,18 @@ let order=await Order.create({
 })
 
 }else{
-  res.status(400).json({
-message:"failed"
-  })
+ 
+  return new Response(
+    JSON.stringify({
+   
+    }),
+    {
+      headers: {
+        "content-type": "application/json",
+      },
+      status: 400,
+    }
+  );
 }
 }
 

@@ -20,7 +20,7 @@ export async function POST(request, response) {
     let order = await instance.orders.create(options);
     return new Response(
       JSON.stringify({
-        message: "sucessfully created order",
+        message: "Successfully created",
         order
       }),
       {
