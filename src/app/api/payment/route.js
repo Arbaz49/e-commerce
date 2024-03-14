@@ -1,6 +1,6 @@
 import crypto from "crypto";
 import Razorpay from "razorpay";
-import Order from "../models/ordersModel.js"
+import Order from "../../models/order"
 
 
 const KEY_ID="rzp_test_qJEvwm7xnj6UXg";
