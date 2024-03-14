@@ -7,6 +7,7 @@ import { Badge } from "@mui/material";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import {clearCart,addQuantity,removeQuantity} from "../store/CartSlice"
+import { useRouter } from "next/navigation";
 export default function CartDrawer() {
   const cartLength = useSelector((state) => state.cart.cartArray.length)
   const cartArray = useSelector((state) => state.cart.cartArray)
@@ -43,6 +44,12 @@ export default function CartDrawer() {
   const handleClear = () => {
     setState({ ...state, ["right"]: false });
     dispatch(clearCart())
+  }
+  const router=useRouter()
+  const handleLogOut=()=>{
+localStorage.removeItem("User")
+setState({ ...state, ["right"]: false });
+router.push("/")
   }
 
   return (
@@ -135,6 +142,9 @@ export default function CartDrawer() {
                 <Button disabled={cartArray.length ? false :true} onClick={handleClear} className="bg-pink-500 text-white font-bold hover:bg-black m-1">
                   Clear
                 </Button>
+                <div>
+                  <button className="bg-pink-500 font-bold border border-pink-500 rounded-lg p-1 ml-3" onClick={handleLogOut}>Log Out</button>
+                </div>
               </div>
             </div>
           </Drawer>

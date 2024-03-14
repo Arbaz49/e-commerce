@@ -2,7 +2,7 @@
 import axios from "axios";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
-import React, { Key, useState } from "react";
+import React, { Key, useEffect, useState } from "react";
 import {BsBagCheck} from "react-icons/bs"
 import { useSelector } from "react-redux";
 interface checkOutType {
@@ -15,6 +15,13 @@ interface checkOutType {
   district:string
 }
 const Checkout = () => {
+  const router=useRouter()
+  const user=localStorage.getItem("User")
+  useEffect(()=>{
+    if(!user){
+      router.push("/")
+    }
+  },[])
   const cartLength = useSelector((state:any) => state.cart.cartArray.length)
   const cartArray = useSelector((state:any) => state.cart.cartArray)
   const [checkOutDetails,setCheckOutDetails]=useState<checkOutType>({
@@ -37,7 +44,6 @@ const Checkout = () => {
   const calculateTotal = () => {
     return cartArray.reduce((total:number, product:any) => total + product.price * product.quantity, 0);
   };
-  const router=useRouter()
   const handlePurchase = async () => {
     // console.log(purchaseInfo);
     const isformInvalid=isAnyFieldEmpty(checkOutDetails)

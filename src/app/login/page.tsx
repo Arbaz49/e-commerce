@@ -27,6 +27,7 @@ const page = () => {
         email: "",
         password: "",
       });
+      localStorage.setItem("User",data)
       router.push("/tshirts")
     } catch (e: any) {
       console.log("Error", e.message);

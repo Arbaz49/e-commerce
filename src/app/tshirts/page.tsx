@@ -10,7 +10,7 @@ const Tshirts = ({ products }: { products: any[] }) => {
         <title>Buy-tshirts</title>
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
       </Head>
-      <h2 className="text-5xl  text-center">Explore Our Tshirts Collection</h2>
+      <h2 className="text-5xl  text-center mt-12">Explore Our Tshirts Collection</h2>
       <p className="p-3 text-sm font-medium text-gray-600 dark:text-gray-400 tracking-tighter mb-3">
         Welcome to Wearthings, your one-stop shop for stylish and unique
         tshirts. Buy T-Shirts at the best price in India. We offer a wide range

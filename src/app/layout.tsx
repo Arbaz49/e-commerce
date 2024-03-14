@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/tshirt.png" type="image/x-icon" />
       </head>
       <body className={inter.className}>
         <ReduxProvider>
